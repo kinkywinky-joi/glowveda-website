@@ -5,36 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7f4eb">
   <meta name="description" content="GlowVeda makes gentle, approachable skincare feel simple and accessible.">
+  <!-- NEW: social preview tags so shared links look polished -->
+  <meta property="og:title" content="GlowVeda — Skincare, Made Approachable">
+  <meta property="og:description" content="Thoughtful, gentle skincare for real life, real budgets and every little moment in between.">
+  <meta property="og:type" content="website">
   <title>GlowVeda — Skincare, Made Approachable</title>
+  <!-- NEW: inline SVG favicon (no extra file needed) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23293f31'/%3E%3Ctext x='32' y='44' font-size='38' text-anchor='middle' fill='%23d6b18d'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- NEW: flags JS early so reveal-on-scroll never hides content if JS fails -->
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><i></i><span>✳</span></div>
+
   <div class="announcement">A little more care. A lot less confusion. <span>Meet GlowVeda.</span></div>
 
+  <!-- CHANGED: header is now sticky and condenses on scroll -->
   <header class="site-header" id="top">
     <a class="wordmark" href="#top" aria-label="GlowVeda home">
       <span class="wordmark-leaf">✳</span>
       <span>glowveda</span>
       <small>SKINCARE, MADE APPROACHABLE</small>
     </a>
-    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
-    <nav class="main-nav" aria-label="Main navigation">
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
       <a href="#philosophy">Our philosophy</a>
       <a href="#the-edit">The edit</a>
       <a href="#routine">Your routine</a>
       <a href="#story">Our story</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta-mobile" href="#newsletter">Get early access ↗</a>
     </nav>
+    <!-- NEW: opens the "saved for later" drawer; badge shows how many items are saved -->
+    <button class="saved-btn" type="button" aria-haspopup="dialog" aria-label="Saved items"><span aria-hidden="true">♡</span><span class="saved-count" hidden>0</span></button>
     <a class="header-cta" href="#newsletter">Get early access <span>↗</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
+      <!-- NEW: decorative petals that drift up (pure CSS) -->
+      <div class="drift" aria-hidden="true"><span>✳</span><span>♡</span><span>·</span><span>✳</span><span>♡</span><span>·</span><span>✳</span></div>
       <div class="hero-copy">
         <p class="eyebrow"><span class="eyebrow-line"></span> GOOD SKIN DAYS START SIMPLE</p>
-        <h1>Skincare that<br><em>gets you.</em></h1>
+        <h1><span class="line"><span>Skincare that</span></span><span class="line"><em><span>gets you.</span></em></span></h1>
         <p class="hero-description">Thoughtful, gentle skincare for real life, real budgets and every little moment in between.</p>
         <div class="hero-actions">
           <a class="button button-dark" href="#the-edit">Explore the GlowVeda edit <span>↗</span></a>
@@ -43,37 +61,43 @@
         <div class="hero-note"><span class="note-star">✳</span><span>Less guesswork. More feel-good care.</span></div>
       </div>
       <div class="hero-visual">
-        <div class="hero-image-wrap" role="img" aria-label="GlowVeda skincare product display with botanical leaves and gentle everyday essentials">
-          <!-- CSS-built product still life: it does not rely on an external image path. -->
-          <div class="hero-art-glow"></div>
-          <div class="hero-art-leaf leaf-one"></div><div class="hero-art-leaf leaf-two"></div><div class="hero-art-leaf leaf-three"></div>
-          <div class="hero-art-pedestal"></div>
-          <div class="hero-product hero-serum"><div class="hero-product-cap"></div><div class="hero-product-neck"></div><div class="hero-product-label"><b>glowveda</b><small>GENTLE DAILY<br>HYDRATION</small><i>everyday care</i></div></div>
-          <div class="hero-product hero-cream"><div class="hero-cream-lid"></div><div class="hero-cream-label"><b>glowveda</b><small>DAILY<br>MOISTURE</small></div></div>
-          <div class="hero-art-caption">A LITTLE CARE, EVERY DAY</div>
+        <div class="hero-image-wrap" data-parallax>
+          <!-- CHANGED: if the image is missing, a CSS illustration takes over (see script.js) -->
+          <img src="assets/glowveda-product-visual.jpg" alt="GlowVeda skincare concept with botanical details and skincare bottles" fetchpriority="high" width="880" height="890">
+          <div class="hero-fallback" aria-hidden="true">
+            <div class="mini bottle"><div class="bottle-cap"></div><div class="bottle-label"><b>glowveda</b></div></div>
+            <div class="mini jar"><div class="jar-lid"></div><div class="jar-label"><b>glowveda</b></div></div>
+            <div class="mini lip-balm"><div class="balm-cap"></div><div class="balm-label"><b>glowveda</b></div></div>
+          </div>
         </div>
-        <div class="floating-stamp"><span>GENTLE BY NATURE</span><b>✳</b><span>MADE FOR EVERYDAY</span></div>
+        <div class="floating-stamp" aria-hidden="true"><span>GENTLE BY NATURE</span><b>✳</b><span>MADE FOR EVERYDAY</span></div>
         <div class="hero-side-note">A softer approach<br>to your daily ritual.</div>
       </div>
       <div class="hero-bottom"><span>01 / A FRESH TAKE ON EVERYDAY SKINCARE</span><span>MADE WITH YOU IN MIND ↓</span></div>
     </section>
 
+    <!-- CHANGED: ticker content is duplicated in markup so the loop is seamless at every width -->
     <section class="ticker" aria-label="Brand values">
-      <div class="ticker-track"><span>GENTLE FORMULATIONS</span><b>✳</b><span>HONEST INGREDIENTS</span><b>✳</b><span>EVERYDAY AFFORDABILITY</span><b>✳</b><span>SKINCARE, SIMPLIFIED</span><b>✳</b><span>GENTLE FORMULATIONS</span><b>✳</b><span>HONEST INGREDIENTS</span><b>✳</b></div>
+      <div class="ticker-track" aria-hidden="true">
+        <div class="ticker-group"><span>GENTLE FORMULATIONS</span><b>✳</b><span>HONEST INGREDIENTS</span><b>✳</b><span>EVERYDAY AFFORDABILITY</span><b>✳</b><span>SKINCARE, SIMPLIFIED</span><b>✳</b></div>
+        <div class="ticker-group"><span>GENTLE FORMULATIONS</span><b>✳</b><span>HONEST INGREDIENTS</span><b>✳</b><span>EVERYDAY AFFORDABILITY</span><b>✳</b><span>SKINCARE, SIMPLIFIED</span><b>✳</b></div>
+      </div>
+      <p class="sr-only">Gentle formulations. Honest ingredients. Everyday affordability. Skincare, simplified.</p>
     </section>
 
     <section class="intro section-pad" id="philosophy">
       <div class="section-kicker">01 — THE GLOWVEDA WAY</div>
       <div class="intro-grid">
-        <h2>Good skincare<br>shouldn't feel like<br><em>a guessing game.</em></h2>
-        <div class="intro-copy">
+        <h2 class="reveal">Good skincare<br>shouldn't feel like<br><em>a guessing game.</em></h2>
+        <div class="intro-copy reveal">
           <p class="large-copy">Too many choices. Too much jargon. Prices that make you pause.</p>
           <p>We believe taking care of your skin should feel easy to understand and easier to fit into everyday life. GlowVeda is being built around gentle, nature-inspired and science-guided care — without the complicated stuff.</p>
           <a class="underlined-link" href="#story">A little about us <span>↗</span></a>
         </div>
       </div>
-      <div class="stat-row">
-        <div class="stat-number">23<small>%</small></div>
+      <div class="stat-row reveal">
+        <!-- NEW: number counts up when scrolled into view -->
+        <div class="stat-number"><span data-count="23">23</span><small>%</small></div>
         <p>of Indian Gen Z consumers find it challenging to select the right skincare products.<sup>*</sup></p>
         <span class="stat-source">*As cited in the GlowVeda venture research presentation.</span>
       </div>
@@ -84,38 +108,54 @@
         <div><div class="section-kicker">02 — THE EVERYDAY EDIT</div><h2>Less, but <em>better.</em></h2></div>
         <p>A considered starting point for a routine that feels like yours. Our planned range focuses on everyday essentials.</p>
       </div>
+      <!-- CHANGED: cards are real buttons now (keyboard + touch friendly) and open a details modal -->
       <div class="product-grid">
         <article class="product-card product-card-sage reveal">
-          <div class="product-art">
-            <span class="product-index">01 / CLEANSE</span>
-            <div class="bottle bottle-cleanser"><div class="bottle-cap"></div><div class="bottle-label"><b>glowveda</b><small>GENTLE<br>DAILY CLEANSE</small><i>everyday care</i></div></div>
-            <span class="art-caption">A fresh start, every day.</span>
-          </div>
-          <div class="product-meta"><div><h3>The gentle cleanser</h3><p>A simple first step for your daily routine.</p></div><span class="coming-soon">IN DEVELOPMENT</span></div>
+          <button class="heart" type="button" data-heart="cleanser" aria-pressed="false" aria-label="Save the gentle cleanser for later"><span aria-hidden="true">♡</span></button>
+          <button class="product-open" type="button" data-product="cleanser" aria-haspopup="dialog" aria-label="View details: the gentle cleanser">
+            <div class="product-art">
+              <span class="product-index">01 / CLEANSE</span>
+              <div class="bottle bottle-cleanser"><div class="bottle-cap"></div><div class="bottle-label"><b>glowveda</b><small>GENTLE<br>DAILY CLEANSE</small><i>everyday care</i></div></div>
+              <span class="art-caption">A fresh start, every day.</span>
+              <span class="view-hint">View details +</span>
+            </div>
+            <div class="product-meta"><div><h3>The gentle cleanser</h3><p>A simple first step for your daily routine.</p></div><span class="coming-soon">IN DEVELOPMENT</span></div>
+          </button>
         </article>
         <article class="product-card product-card-peach reveal">
-          <div class="product-art">
-            <span class="product-index">02 / HYDRATE</span>
-            <div class="jar"><div class="jar-lid"></div><div class="jar-label"><b>glowveda</b><small>DAILY<br>MOISTURE</small><i>everyday care</i></div></div>
-            <span class="art-caption">A little comfort for your skin.</span>
-          </div>
-          <div class="product-meta"><div><h3>The daily moisturiser</h3><p>Everyday moisture, without the fuss.</p></div><span class="coming-soon">IN DEVELOPMENT</span></div>
+          <button class="heart" type="button" data-heart="moisturiser" aria-pressed="false" aria-label="Save the daily moisturiser for later"><span aria-hidden="true">♡</span></button>
+          <button class="product-open" type="button" data-product="moisturiser" aria-haspopup="dialog" aria-label="View details: the daily moisturiser">
+            <div class="product-art">
+              <span class="product-index">02 / HYDRATE</span>
+              <div class="jar"><div class="jar-lid"></div><div class="jar-label"><b>glowveda</b><small>DAILY<br>MOISTURE</small><i>everyday care</i></div></div>
+              <span class="art-caption">A little comfort for your skin.</span>
+              <span class="view-hint">View details +</span>
+            </div>
+            <div class="product-meta"><div><h3>The daily moisturiser</h3><p>Everyday moisture, without the fuss.</p></div><span class="coming-soon">IN DEVELOPMENT</span></div>
+          </button>
         </article>
         <article class="product-card product-card-lilac reveal">
-          <div class="product-art">
-            <span class="product-index">03 / CARE</span>
-            <div class="lip-balm"><div class="balm-cap"></div><div class="balm-label"><b>glowveda</b><small>LIP<br>CARE</small></div></div>
-            <span class="art-caption">Small ritual. Feel-good moment.</span>
-          </div>
-          <div class="product-meta"><div><h3>The everyday lip care</h3><p>A pocket-sized moment of self-care.</p></div><span class="coming-soon">IN DEVELOPMENT</span></div>
+          <button class="heart" type="button" data-heart="lipcare" aria-pressed="false" aria-label="Save the everyday lip care for later"><span aria-hidden="true">♡</span></button>
+          <button class="product-open" type="button" data-product="lipcare" aria-haspopup="dialog" aria-label="View details: the everyday lip care">
+            <div class="product-art">
+              <span class="product-index">03 / CARE</span>
+              <div class="lip-balm"><div class="balm-cap"></div><div class="balm-label"><b>glowveda</b><small>LIP<br>CARE</small></div></div>
+              <span class="art-caption">Small ritual. Feel-good moment.</span>
+              <span class="view-hint">View details +</span>
+            </div>
+            <div class="product-meta"><div><h3>The everyday lip care</h3><p>A pocket-sized moment of self-care.</p></div><span class="coming-soon">IN DEVELOPMENT</span></div>
+          </button>
         </article>
       </div>
       <p class="product-disclaimer">The product visuals and range names above are concept mock-ups based on the proposed cleanser, moisturiser and lip-care categories. Final formulas, ingredients, sizes and pricing are yet to be announced.</p>
     </section>
 
     <section class="manifesto">
-      <div class="manifesto-image"><img src="assets/glowveda-community.jpg" alt="Young people exploring skincare together"></div>
-      <div class="manifesto-copy">
+      <div class="manifesto-image">
+        <img src="assets/glowveda-community.jpg" alt="Young people exploring skincare together" loading="lazy" width="900" height="900">
+        <div class="manifesto-fallback" aria-hidden="true"><span>✳</span><p>Your skin.<br>Your pace.</p></div>
+      </div>
+      <div class="manifesto-copy reveal">
         <div class="section-kicker">03 — A NOTE TO YOUR SKIN</div>
         <span class="manifesto-mark">✳</span>
         <h2>Your skin.<br>Your pace.<br><em>Your kind of glow.</em></h2>
@@ -130,9 +170,44 @@
         <p>Start with the basics. Get to know your skin. Add only what makes sense for you.</p>
       </div>
       <div class="routine-steps">
-        <article class="routine-step reveal"><span class="step-no">01</span><div class="step-icon">◌</div><h3>Cleanse</h3><p>Begin with a gentle cleanse to wash away the day.</p><span class="step-tag">THE FRESH START</span></article>
-        <article class="routine-step reveal"><span class="step-no">02</span><div class="step-icon">◒</div><h3>Moisturise</h3><p>Make room for a little everyday comfort and moisture.</p><span class="step-tag">THE COMFORT STEP</span></article>
-        <article class="routine-step reveal"><span class="step-no">03</span><div class="step-icon">✳</div><h3>Care</h3><p>Make small self-care moments part of your day.</p><span class="step-tag">THE YOU MOMENT</span></article>
+        <article class="routine-step reveal"><span class="step-no">01</span><div class="step-icon" aria-hidden="true">◌</div><h3>Cleanse</h3><p>Begin with a gentle cleanse to wash away the day.</p><span class="step-tag">THE FRESH START</span></article>
+        <article class="routine-step reveal"><span class="step-no">02</span><div class="step-icon" aria-hidden="true">◒</div><h3>Moisturise</h3><p>Make room for a little everyday comfort and moisture.</p><span class="step-tag">THE COMFORT STEP</span></article>
+        <article class="routine-step reveal"><span class="step-no">03</span><div class="step-icon" aria-hidden="true">✳</div><h3>Care</h3><p>Make small self-care moments part of your day.</p><span class="step-tag">THE YOU MOMENT</span></article>
+      </div>
+
+      <!-- NEW: "Find your simple start" — a short, friendly 3-question picker.
+           It only points to a routine step from the brand intro; it is not a skin assessment. -->
+      <div class="quiz reveal" id="quiz" aria-labelledby="quiz-title">
+        <div class="quiz-head">
+          <div>
+            <div class="section-kicker">TRY IT · 30 SECONDS</div>
+            <h3 id="quiz-title">Find your simple start</h3>
+          </div>
+          <div class="quiz-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="quiz-body" aria-live="polite"></div>
+      </div>
+      <!-- NEW: daily ritual tracker. Ticks and streak are stored on this device only.
+           It is a habit tracker, not skincare advice. -->
+      <div class="ritual reveal" id="ritual" aria-labelledby="ritual-title">
+        <div class="ritual-pal">
+          <div class="pal" data-level="0" aria-hidden="true"><i class="eye l"></i><i class="eye r"></i><i class="cheek l"></i><i class="cheek r"></i><i class="mouth"></i></div>
+        </div>
+        <div class="ritual-main">
+          <div class="section-kicker">A TINY DAILY HABIT</div>
+          <h3 id="ritual-title">Today's little ritual</h3>
+          <p class="ritual-sub" id="ritual-status" aria-live="polite">Tick each step as you go. Saved on this device only.</p>
+          <div class="ritual-list">
+            <label class="ritual-item"><input type="checkbox" data-r="0"><span class="tick" aria-hidden="true"></span><span class="r-label"><b>Cleanse</b><small>The fresh start</small></span></label>
+            <label class="ritual-item"><input type="checkbox" data-r="1"><span class="tick" aria-hidden="true"></span><span class="r-label"><b>Moisturise</b><small>The comfort step</small></span></label>
+            <label class="ritual-item"><input type="checkbox" data-r="2"><span class="tick" aria-hidden="true"></span><span class="r-label"><b>Care</b><small>The you moment</small></span></label>
+          </div>
+          <div class="ritual-foot">
+            <div class="week" id="week" role="img" aria-label="Your last 7 days"></div>
+            <button class="link-btn ritual-reset" type="button">Reset today</button>
+          </div>
+        </div>
+        <div class="streak" aria-live="polite"><b id="streak-count">0</b><span>day streak</span></div>
       </div>
       <p class="routine-note">A simple brand introduction, not a personalised dermatological routine. Choose products based on your own skin needs.</p>
     </section>
@@ -140,27 +215,50 @@
     <section class="values section-pad">
       <div class="section-kicker">05 — WHAT WE BELIEVE IN</div>
       <div class="values-grid">
-        <div class="value-intro"><h2>Care that<br><em>makes sense.</em></h2><p>We want to make skincare feel more welcoming — especially for young people starting their journey.</p></div>
-        <article class="value-card"><span>01</span><div class="value-symbol">♡</div><h3>Gentle first</h3><p>Thoughtful formulations designed with everyday skin needs in mind.</p></article>
-        <article class="value-card"><span>02</span><div class="value-symbol">⌕</div><h3>Clarity matters</h3><p>Clear ingredient information, so choosing care feels less confusing.</p></article>
-        <article class="value-card"><span>03</span><div class="value-symbol">₹</div><h3>Budget-aware</h3><p>Accessible skincare should have a place in everyday life.</p></article>
+        <div class="value-intro reveal"><h2>Care that<br><em>makes sense.</em></h2><p>We want to make skincare feel more welcoming — especially for young people starting their journey.</p></div>
+        <article class="value-card reveal"><span>01</span><div class="value-symbol" aria-hidden="true">♡</div><h3>Gentle first</h3><p>Thoughtful formulations designed with everyday skin needs in mind.</p></article>
+        <article class="value-card reveal"><span>02</span><div class="value-symbol" aria-hidden="true">⌕</div><h3>Clarity matters</h3><p>Clear ingredient information, so choosing care feels less confusing.</p></article>
+        <article class="value-card reveal"><span>03</span><div class="value-symbol" aria-hidden="true">₹</div><h3>Budget-aware</h3><p>Accessible skincare should have a place in everyday life.</p></article>
       </div>
     </section>
 
     <section class="story section-pad" id="story">
-      <div class="story-left"><div class="section-kicker">06 — THE STORY SO FAR</div><h2>Made for the<br><em>everyday you.</em></h2></div>
-      <div class="story-right"><p class="large-copy">GlowVeda began with a simple thought: skincare should be approachable, not intimidating.</p><p>Built around the needs of teenagers, college students and young adults, the idea is to bring together affordability, gentle care and ingredient transparency. We're at the beginning of the journey, and we're glad you're here.</p><div class="story-signoff">With care, <span>Team GlowVeda ✳</span></div></div>
+      <div class="story-left reveal"><div class="section-kicker">06 — THE STORY SO FAR</div><h2>Made for the<br><em>everyday you.</em></h2></div>
+      <div class="story-right reveal"><p class="large-copy">GlowVeda began with a simple thought: skincare should be approachable, not intimidating.</p><p>Built around the needs of teenagers, college students and young adults, the idea is to bring together affordability, gentle care and ingredient transparency. We're at the beginning of the journey, and we're glad you're here.</p><div class="story-signoff">With care, <span>Team GlowVeda ✳</span></div></div>
+    </section>
+
+    <!-- NEW: FAQ accordion (native <details>, no JS needed). Answers only restate facts already on the site. -->
+    <section class="faq section-pad" id="faq">
+      <div class="section-heading">
+        <div><div class="section-kicker">07 — GOOD TO KNOW</div><h2>Quick <em>answers.</em></h2></div>
+        <p>Where we are today, in plain words.</p>
+      </div>
+      <div class="faq-list">
+        <details class="reveal"><summary>When does GlowVeda launch?</summary><div><p>We're at the beginning of the journey and haven't announced a launch date yet. Join the early-access list below and we'll share updates as the story unfolds.</p></div></details>
+        <details class="reveal"><summary>What will you be making?</summary><div><p>Our planned range focuses on everyday essentials: a gentle cleanser, a daily moisturiser and an everyday lip care. All three are currently in development.</p></div></details>
+        <details class="reveal"><summary>How much will products cost?</summary><div><p>We're building GlowVeda to be budget-aware, but final pricing, sizes, formulas and ingredients are yet to be announced.</p></div></details>
+        <details class="reveal"><summary>Is "Find your simple start" a skin assessment?</summary><div><p>No. It's a light-hearted way to explore the routine steps on this page. Please choose products based on your own skin needs.</p></div></details>
+      </div>
     </section>
 
     <section class="newsletter" id="newsletter">
-      <div class="newsletter-decoration">✳</div>
+      <div class="newsletter-decoration" aria-hidden="true">✳</div>
       <div class="section-kicker">A LITTLE GLOW IN YOUR INBOX</div>
       <h2>Be here for<br><em>the first glow.</em></h2>
       <p>Get updates as the GlowVeda story unfolds.</p>
-      <form class="signup-form" id="signup-form">
+      <!-- CHANGED: real validation, loading + success states, duplicate check -->
+      <!-- NEW: optional interests, saved with the sign-up -->
+      <fieldset class="interest">
+        <legend>I'd like to hear about <span class="sr-only">(optional)</span></legend>
+        <label class="chip"><input type="checkbox" name="interest" value="cleanser" form="signup-form"><span>Cleanser</span></label>
+        <label class="chip"><input type="checkbox" name="interest" value="moisturiser" form="signup-form"><span>Moisturiser</span></label>
+        <label class="chip"><input type="checkbox" name="interest" value="lipcare" form="signup-form"><span>Lip care</span></label>
+        <label class="chip"><input type="checkbox" name="interest" value="news" form="signup-form"><span>Launch news</span></label>
+      </fieldset>
+      <form class="signup-form" id="signup-form" novalidate>
         <label class="sr-only" for="email">Your email address</label>
-        <input type="email" id="email" name="email" placeholder="Your email address" required>
-        <button type="submit">Keep me posted <span>↗</span></button>
+        <input type="email" id="email" name="email" placeholder="Your email address" autocomplete="email" required aria-describedby="form-message">
+        <button type="submit"><span class="btn-label">Keep me posted</span> <span class="btn-arrow" aria-hidden="true">↗</span></button>
       </form>
       <p class="form-message" id="form-message" role="status" aria-live="polite">No spam. Just occasional GlowVeda updates.</p>
       <small class="form-note">Demo sign-up only — connect this form to an email platform before launch.</small>
@@ -170,10 +268,58 @@
   <footer class="site-footer">
     <a class="wordmark footer-wordmark" href="#top"><span class="wordmark-leaf">✳</span><span>glowveda</span><small>SKINCARE, MADE APPROACHABLE</small></a>
     <p>Gentle care. Everyday confidence.</p>
-    <div class="footer-links"><a href="#philosophy">Our philosophy</a><a href="#the-edit">The edit</a><a href="#story">Our story</a><a href="#top">Back to top ↑</a></div>
+    <div class="footer-links"><a href="#philosophy">Our philosophy</a><a href="#the-edit">The edit</a><a href="#story">Our story</a><a href="#faq">FAQ</a><a href="#top">Back to top ↑</a><button class="link-btn share-btn" type="button">Share GlowVeda ↗</button><button class="link-btn sparkle-toggle" type="button" aria-pressed="true">✳ Sparkles: on</button></div>
     <div class="footer-bottom"><span>© <span id="year"></span> GlowVeda. A brand in the making.</span><span>MADE WITH CARE, IN INDIA</span></div>
   </footer>
+
+  <!-- NEW: floating back-to-top button -->
+  <button class="to-top" type="button" aria-label="Back to top">↑</button>
+
+  <!-- NEW: product details modal (content is injected from script.js) -->
+  <div class="modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" tabindex="-1">
+      <button class="modal-close" type="button" data-close aria-label="Close details">✕</button>
+      <div class="modal-art"></div>
+      <div class="modal-content">
+        <span class="modal-tag"></span>
+        <h3 id="modal-title"></h3>
+        <p class="modal-lead"></p>
+        <dl class="modal-facts"></dl>
+        <p class="modal-fineprint">Concept mock-up. Final formulas, ingredients, sizes and pricing are yet to be announced.</p>
+        <div class="modal-actions">
+          <button class="button button-dark modal-notify" type="button">Notify me when it's ready <span>↗</span></button>
+          <button class="button button-ghost modal-save" type="button" aria-pressed="false"><span class="mh" aria-hidden="true">♡</span> <span class="ms">Save for later</span></button>
+        </div>
+        <div class="modal-nav">
+          <button type="button" data-step="-1">← Previous</button>
+          <button type="button" data-step="1">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: saved-for-later drawer -->
+  <div class="drawer" id="saved-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+    <div class="drawer-backdrop" data-drawer-close></div>
+    <aside class="drawer-panel" tabindex="-1">
+      <div class="drawer-head">
+        <h3 id="drawer-title">Saved for later</h3>
+        <button class="modal-close drawer-x" type="button" data-drawer-close aria-label="Close saved items">✕</button>
+      </div>
+      <ul class="saved-list"></ul>
+      <p class="saved-empty">Nothing saved yet. Tap the ♡ on a product to keep it here.</p>
+      <div class="drawer-actions">
+        <button class="button button-dark drawer-notify" type="button">Notify me about these <span>↗</span></button>
+        <button class="link-btn drawer-clear" type="button">Clear all</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- NEW: toast notifications -->
+  <div class="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
